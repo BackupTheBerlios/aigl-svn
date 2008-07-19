@@ -7,10 +7,10 @@
 	objects = {
 		A05BA04A0E3276A40068D206 = {
 			children = (
-				A05BA05D0E3278080068D206,
-				A05BA0670E3278080068D206,
+				A05BA0D80E327B220068D206,
+				A05BA0CE0E327B220068D206,
+				A05BA0E20E327B220068D206,
 				A05BA0580E3276B30068D206,
-				A05BA0590E3276B30068D206,
 			);
 			isa = PBXGroup;
 			refType = 4;
@@ -53,19 +53,20 @@
 			projectDirPath = "";
 			targets = (
 				A05BA0560E3276B30068D206,
+				A05BA0B80E327A9D0068D206,
 			);
 		};
 		A05BA0520E3276B30068D206 = {
 			buildActionMask = 2147483647;
 			files = (
-				A05BA06F0E3278080068D206,
-				A05BA0700E3278080068D206,
-				A05BA0710E3278080068D206,
-				A05BA0720E3278080068D206,
-				A05BA0730E3278080068D206,
-				A05BA0740E3278080068D206,
-				A05BA0750E3278080068D206,
-				A05BA0760E3278080068D206,
+				A05BA0EB0E327B220068D206,
+				A05BA0EC0E327B220068D206,
+				A05BA0ED0E327B220068D206,
+				A05BA0EE0E327B220068D206,
+				A05BA0EF0E327B220068D206,
+				A05BA0F00E327B220068D206,
+				A05BA0F10E327B220068D206,
+				A05BA0F20E327B220068D206,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +74,7 @@
 		A05BA0530E3276B30068D206 = {
 			buildActionMask = 2147483647;
 			files = (
+				A05BA0F30E327B220068D206,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,12 +82,12 @@
 		A05BA0540E3276B30068D206 = {
 			buildActionMask = 2147483647;
 			files = (
-				A05BA0770E3278080068D206,
-				A05BA0780E3278080068D206,
-				A05BA0790E3278080068D206,
-				A05BA07A0E3278080068D206,
-				A05BA07B0E3278080068D206,
-				A05BA07C0E3278080068D206,
+				A05BA0E40E327B220068D206,
+				A05BA0E50E327B220068D206,
+				A05BA0E60E327B220068D206,
+				A05BA0E70E327B220068D206,
+				A05BA0E80E327B220068D206,
+				A05BA0E90E327B220068D206,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +114,7 @@
 				FRAMEWORK_VERSION = A;
 				GCC_OPTIMIZATION_LEVEL = 2;
 				HEADER_SEARCH_PATHS = "${SRCROOT}/Headers ${SRCROOT}/Sources";
-				INFOPLIST_FILE = "GRL-Info.plist";
+				INFOPLIST_FILE = "Resources/GRL-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
@@ -162,13 +164,282 @@
 		A05BA0580E3276B30068D206 = {
 			children = (
 				A05BA0570E3276B30068D206,
+				A05BA0B90E327A9D0068D206,
 			);
 			isa = PBXGroup;
 			name = Products;
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		A05BA0590E3276B30068D206 = {
+		A05BA0B60E327A9D0068D206 = {
+			buildActionMask = 2147483647;
+			files = (
+				A05BA0F40E327B390068D206,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A05BA0B70E327A9D0068D206 = {
+			buildActionMask = 2147483647;
+			files = (
+				A05BA0F50E327B480068D206,
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A05BA0B80E327A9D0068D206 = {
+			buildPhases = (
+				A05BA0B60E327A9D0068D206,
+				A05BA0B70E327A9D0068D206,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				INSTALL_PATH = /usr/local/bin;
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-lobjc";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = test;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+				A05BA0BC0E327AA50068D206,
+			);
+			isa = PBXNativeTarget;
+			name = test;
+			productName = test;
+			productReference = A05BA0B90E327A9D0068D206;
+			productType = "com.apple.product-type.tool";
+		};
+		A05BA0B90E327A9D0068D206 = {
+			explicitFileType = "compiled.mach-o.executable";
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = test;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A05BA0BB0E327AA50068D206 = {
+			containerPortal = A05BA04E0E3276A40068D206;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = A05BA0560E3276B30068D206;
+			remoteInfo = GRL;
+		};
+		A05BA0BC0E327AA50068D206 = {
+			isa = PBXTargetDependency;
+			target = A05BA0560E3276B30068D206;
+			targetProxy = A05BA0BB0E327AA50068D206;
+		};
+		A05BA0CE0E327B220068D206 = {
+			children = (
+				A05BA0CF0E327B220068D206,
+				A05BA0D60E327B220068D206,
+			);
+			isa = PBXGroup;
+			path = Sources;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0CF0E327B220068D206 = {
+			children = (
+				A05BA0D00E327B220068D206,
+				A05BA0D10E327B220068D206,
+				A05BA0D20E327B220068D206,
+				A05BA0D30E327B220068D206,
+				A05BA0D40E327B220068D206,
+				A05BA0D50E327B220068D206,
+			);
+			isa = PBXGroup;
+			name = GRL;
+			path = Sources/GRL;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0D00E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = Array.m;
+			path = Sources/GRL/Array.m;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0D10E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = Functions.m;
+			path = Sources/GRL/Functions.m;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0D20E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = Object.m;
+			path = Sources/GRL/Object.m;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0D30E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = Pool.m;
+			path = Sources/GRL/Pool.m;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0D40E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.objcpp;
+			name = String.mm;
+			path = Sources/GRL/String.mm;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0D50E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = Value.m;
+			path = Sources/GRL/Value.m;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0D60E327B220068D206 = {
+			children = (
+				A05BA0D70E327B220068D206,
+			);
+			isa = PBXGroup;
+			name = test;
+			path = Sources/test;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0D70E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = main.m;
+			path = Sources/test/main.m;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0D80E327B220068D206 = {
+			children = (
+				A05BA0D90E327B220068D206,
+			);
+			isa = PBXGroup;
+			path = Headers;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0D90E327B220068D206 = {
+			children = (
+				A05BA0DA0E327B220068D206,
+				A05BA0DB0E327B220068D206,
+				A05BA0DC0E327B220068D206,
+				A05BA0DD0E327B220068D206,
+				A05BA0DE0E327B220068D206,
+				A05BA0DF0E327B220068D206,
+				A05BA0E00E327B220068D206,
+				A05BA0E10E327B220068D206,
+			);
+			isa = PBXGroup;
+			name = GRL;
+			path = Headers/GRL;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0DA0E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Array.h;
+			path = Headers/GRL/Array.h;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0DB0E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Config.h;
+			path = Headers/GRL/Config.h;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0DC0E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Functions.h;
+			path = Headers/GRL/Functions.h;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0DD0E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = GRL.h;
+			path = Headers/GRL/GRL.h;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0DE0E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Object.h;
+			path = Headers/GRL/Object.h;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0DF0E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Pool.h;
+			path = Headers/GRL/Pool.h;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0E00E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = String.h;
+			path = Headers/GRL/String.h;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0E10E327B220068D206 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Value.h;
+			path = Headers/GRL/Value.h;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0E20E327B220068D206 = {
+			children = (
+				A05BA0E30E327B220068D206,
+			);
+			isa = PBXGroup;
+			path = Resources;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A05BA0E30E327B220068D206 = {
+			fileEncoding = 30;
 			isa = PBXFileReference;
 			lastKnownFileType = text.xml;
 			name = "GRL-Info.plist";
@@ -176,242 +447,104 @@
 			refType = 2;
 			sourceTree = SOURCE_ROOT;
 		};
-		A05BA05D0E3278080068D206 = {
-			children = (
-				A05BA05F0E3278080068D206,
-				A05BA0600E3278080068D206,
-				A05BA0610E3278080068D206,
-				A05BA0620E3278080068D206,
-				A05BA0630E3278080068D206,
-				A05BA0640E3278080068D206,
-				A05BA0650E3278080068D206,
-				A05BA0660E3278080068D206,
-			);
-			isa = PBXGroup;
-			path = Headers;
-			refType = 2;
-			sourceTree = SOURCE_ROOT;
-		};
-		A05BA05F0E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Array.h;
-			path = GRL/Array.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA0600E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Config.h;
-			path = GRL/Config.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA0610E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Functions.h;
-			path = GRL/Functions.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA0620E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = GRL.h;
-			path = GRL/GRL.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA0630E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Object.h;
-			path = GRL/Object.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA0640E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Pool.h;
-			path = GRL/Pool.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA0650E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = String.h;
-			path = GRL/String.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA0660E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Value.h;
-			path = GRL/Value.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA0670E3278080068D206 = {
-			children = (
-				A05BA0690E3278080068D206,
-				A05BA06A0E3278080068D206,
-				A05BA06B0E3278080068D206,
-				A05BA06C0E3278080068D206,
-				A05BA06D0E3278080068D206,
-				A05BA06E0E3278080068D206,
-			);
-			isa = PBXGroup;
-			path = Sources;
-			refType = 2;
-			sourceTree = SOURCE_ROOT;
-		};
-		A05BA0690E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			name = Array.m;
-			path = GRL/Array.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA06A0E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			name = Functions.m;
-			path = GRL/Functions.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA06B0E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			name = Object.m;
-			path = GRL/Object.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA06C0E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			name = Pool.m;
-			path = GRL/Pool.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA06D0E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.objcpp;
-			name = String.mm;
-			path = GRL/String.mm;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA06E0E3278080068D206 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			name = Value.m;
-			path = GRL/Value.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		A05BA06F0E3278080068D206 = {
-			fileRef = A05BA05F0E3278080068D206;
+		A05BA0E40E327B220068D206 = {
+			fileRef = A05BA0D00E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		A05BA0700E3278080068D206 = {
-			fileRef = A05BA0600E3278080068D206;
+		A05BA0E50E327B220068D206 = {
+			fileRef = A05BA0D10E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		A05BA0710E3278080068D206 = {
-			fileRef = A05BA0610E3278080068D206;
+		A05BA0E60E327B220068D206 = {
+			fileRef = A05BA0D20E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		A05BA0720E3278080068D206 = {
-			fileRef = A05BA0620E3278080068D206;
+		A05BA0E70E327B220068D206 = {
+			fileRef = A05BA0D30E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		A05BA0730E3278080068D206 = {
-			fileRef = A05BA0630E3278080068D206;
+		A05BA0E80E327B220068D206 = {
+			fileRef = A05BA0D40E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		A05BA0740E3278080068D206 = {
-			fileRef = A05BA0640E3278080068D206;
+		A05BA0E90E327B220068D206 = {
+			fileRef = A05BA0D50E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		A05BA0750E3278080068D206 = {
-			fileRef = A05BA0650E3278080068D206;
+		A05BA0EB0E327B220068D206 = {
+			fileRef = A05BA0DA0E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		A05BA0760E3278080068D206 = {
-			fileRef = A05BA0660E3278080068D206;
+		A05BA0EC0E327B220068D206 = {
+			fileRef = A05BA0DB0E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		A05BA0770E3278080068D206 = {
-			fileRef = A05BA0690E3278080068D206;
+		A05BA0ED0E327B220068D206 = {
+			fileRef = A05BA0DC0E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		A05BA0780E3278080068D206 = {
-			fileRef = A05BA06A0E3278080068D206;
+		A05BA0EE0E327B220068D206 = {
+			fileRef = A05BA0DD0E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		A05BA0790E3278080068D206 = {
-			fileRef = A05BA06B0E3278080068D206;
+		A05BA0EF0E327B220068D206 = {
+			fileRef = A05BA0DE0E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		A05BA07A0E3278080068D206 = {
-			fileRef = A05BA06C0E3278080068D206;
+		A05BA0F00E327B220068D206 = {
+			fileRef = A05BA0DF0E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		A05BA07B0E3278080068D206 = {
-			fileRef = A05BA06D0E3278080068D206;
+		A05BA0F10E327B220068D206 = {
+			fileRef = A05BA0E00E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
 		};
-		A05BA07C0E3278080068D206 = {
-			fileRef = A05BA06E0E3278080068D206;
+		A05BA0F20E327B220068D206 = {
+			fileRef = A05BA0E10E327B220068D206;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		A05BA0F30E327B220068D206 = {
+			fileRef = A05BA0E30E327B220068D206;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		A05BA0F40E327B390068D206 = {
+			fileRef = A05BA0D70E327B220068D206;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		A05BA0F50E327B480068D206 = {
+			fileRef = A05BA0570E3276B30068D206;
 			isa = PBXBuildFile;
 			settings = {
 			};
