@@ -90,7 +90,7 @@ void		GLogStreamSet(FILE *outputStream)
 void		GLog(GString *format, ...)
 {
 	va_list ap;
-	va_start(ap, [format cString]);
+	va_start(ap, format);
 	GLogv(format, ap);
 	va_end(ap);
 }
