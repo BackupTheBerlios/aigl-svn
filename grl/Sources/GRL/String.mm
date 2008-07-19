@@ -42,7 +42,7 @@ struct _GStringOpaqueData {
 	if (mbs) {
 		delete mbs->cpps;
 	}
-	free (mbs);
+	GFree (mbs);
 	[super dealloc];
 }
 
@@ -155,12 +155,6 @@ struct _GStringOpaqueData {
 	if (self) {
 		char *buffer = NULL;
 		
-		if (!format) {
-			GErrorSet(GInconsistencyError);
-			[self release];
-			return nil;
-		}
-		
 		mbs = (_GStringOpaqueData *)GAllocate (sizeof(*mbs));
 		
 		if(!mbs) {
@@ -175,6 +169,11 @@ struct _GStringOpaqueData {
 			GErrorSet (GMemError);
 			[self release];
 			return nil;
+		}
+		
+		if (!format) {
+			GErrorSet(GInconsistencyError);
+			return self;
 		}
 		
 		vasprintf(&buffer, format, args);
@@ -323,7 +322,7 @@ struct _GStringOpaqueData {
 }
 
 
-- (void) readFrom:(char const *)filename
+- (void) readFromFile:(char const *)filename
 {
 	if (!filename) {
 		GErrorSet(GInconsistencyError);
@@ -351,7 +350,7 @@ struct _GStringOpaqueData {
 	mbs->cpps->assign(buffer);
 }
 
-- (void) writeTo:(char const *)filename
+- (void) writeToFile:(char const *)filename
 {
 	if (!filename) {
 		GErrorSet(GInconsistencyError);

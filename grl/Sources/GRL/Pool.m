@@ -66,7 +66,7 @@ static GPool *currentPool;
 	for (i = 0;i < cnt;i++) {
 		void *ptr = (void *)[cObjects first];
 		[cObjects removeFirst];
-		free (ptr);
+		GFree (ptr);
 	}
 	
 	[cObjects release];

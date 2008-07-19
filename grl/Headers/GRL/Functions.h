@@ -32,6 +32,7 @@ extern "C" {
 
 #import <GRL/Config.h>
 #import <GRL/String.h>
+#import <stdlib.h>
 #import <stdarg.h>
 #import <stdio.h>
 
@@ -41,6 +42,7 @@ void *		GAllocate(unsigned length);
 void *		GReallocate(void *ptr, unsigned usedLength, unsigned newLength);
 id			GAutoreleaseObject(id <GObject> object);
 void *		GAutoreleasePointer(void *object);
+#define		GFree(obj) free(obj), obj = NULL
 
 
 #pragma mark GLog

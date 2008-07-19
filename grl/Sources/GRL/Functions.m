@@ -56,14 +56,14 @@ static void GFunctionsPrivateInit(void)
 void *		GAllocate(unsigned length)
 {
 	void *ptr = malloc(length);
-	if (ptr) memset (ptr, 0, length);
+	if (ptr) bzero (ptr, length);
 	return ptr;
 }
 
 void *		GReallocate(void *ptr, unsigned usedLength, unsigned newLength)
 {
 	char *tmp = realloc(ptr, newLength);
-	if (tmp && newLength > usedLength) memset (ptr + usedLength, 0, newLength - usedLength);
+	if (tmp && newLength > usedLength) bzero (ptr + usedLength, newLength - usedLength);
 	return (void *)tmp;
 }
 

@@ -36,8 +36,6 @@ extern "C" {
 typedef struct _GStringOpaqueData _GStringOpaqueData;
 	
 @interface GString : GObject {
-//	char *data;
-//	unsigned length;
 	_GStringOpaqueData *mbs;
 }
 
@@ -78,8 +76,8 @@ typedef struct _GStringOpaqueData _GStringOpaqueData;
 
 - (BOOL) isEqualTo:(GString *)string;
 
-- (void) readFrom:(char const *)filename;
-- (void) writeTo:(char const *)filename;
+- (void) readFromFile:(char const *)filename;
+- (void) writeToFile:(char const *)filename;
 
 @end
 
