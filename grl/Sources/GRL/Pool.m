@@ -44,6 +44,13 @@ static GPool *currentPool;
 			return nil;
 		}
 		
+		cObjects = [GRawArray new];
+		
+		if (!cObjects) {
+			[self release];
+			return nil;
+		}
+		
 		currentPool = self;
 	}
 	return self;
@@ -90,7 +97,7 @@ static GPool *currentPool;
 
 - (void) addObject:(id)obj
 {
-	[objcObjects add:obj];
+	[objcObjects addObject:obj];
 }
 
 + (void) addPointer:(void *)cObj
@@ -104,7 +111,7 @@ static GPool *currentPool;
 
 - (void) addPointer:(void *)cObj
 {
-	[cObjects add:cObj];
+	[cObjects addObject:cObj];
 }
 
 @end
