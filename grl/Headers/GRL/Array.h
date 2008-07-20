@@ -35,63 +35,84 @@ extern "C" {
 
 #define GNotFound UINT_MAX
 
+typedef struct _GRawArrayOpaqueData _GRawArrayOpaqueData;
+
+	
 @interface GRawArray : GObject {
-	const void **array;
-	unsigned length;
+	_GRawArrayOpaqueData *mbs;
+//	const void **array;
+//	unsigned length;
 }
 
-- (void)appendObjectsFrom:(GRawArray *)list;
-- (void)appendObjectsFrom:(GRawArray *)list range:(GRange)range;
-- (void)insertObjectsFrom:(GRawArray *)list range:(GRange)range atIndex:(unsigned)index;
++ (GRawArray *) arrayWithObjects:(const void **)objList;
++ (GRawArray *) arrayWithObjectsFromArray:(GRawArray *)list;
++ (GRawArray *) arrayWithObjectsFromArray:(GRawArray *)list range:(GRange)range;
 
-- (void)addObjects:(const void **)list;
+- (GRawArray *) initWithObjects:(const void **)objList;
+- (GRawArray *) initWithObjectsFromArray:(GRawArray *)list;
+- (GRawArray *) initWithObjectsFromArray:(GRawArray *)list range:(GRange)range;
 
-- (void)add:(const void *)obj;
-- (void)add:(const void *)obj ifAbsent:(BOOL)flag;
-- (void)insert:(const void *)obj atIndex:(unsigned)idx;
+- (void) addObject:(const void *)obj;
+- (void) addObject:(const void *)obj ifAbsent:(BOOL)flag;
+- (void) insertObject:(const void *)obj atIndex:(unsigned)idx;
 
-- (void)removeObjectAtIndex:(unsigned)idx;
-- (void)remove:(const void *)obj;
-- (void)removeObjectsInRange:(GRange)range;
-- (void)removeFirst;
-- (void)removeLast;
-- (void)empty;
+- (void) addObjects:(const void **)list;
+- (void) addObjectsFromArray:(GRawArray *)list;
+- (void) addObjectsFromArray:(GRawArray *)list range:(GRange)range;
+- (void) insertObjectsFromArray:(GRawArray *)list range:(GRange)range atIndex:(unsigned)index;
 
-- (const void *)first;
-- (const void *)last;
-- (const void *)objectAtIndex:(unsigned)idx;
-- (unsigned)indexOf:(const void *)obj;
-- (BOOL)contains:(const void *)obj;
+- (void) removeObjectAtIndex:(unsigned)idx;
+- (void) removeObject:(const void *)obj;
+- (void) removeObjectsInRange:(GRange)range;
+- (void) removeFirst;
+- (void) removeLast;
+- (void) empty;
 
-- (unsigned)count;
+- (const void *) first;
+- (const void *) last;
+- (const void *) objectAtIndex:(unsigned)idx;
+- (unsigned) indexOfObject:(const void *)obj;
+- (BOOL) contains:(const void *)obj;
+
+- (unsigned) count;
 
 @end
 
-@interface GArray : GRawArray {
-
+@interface GArray : GObject {
+	GRawArray *arr;
 }
 
-//- (void)append:(GArray *)list;
-//- (void)append:(GArray *)list from:(unsigned)idx over:(unsigned)range;
-//
-- (void)add:(id <GObject>)obj;
-//- (void)add:(id <GObject>)obj ifAbsent:(BOOL)flag;
-//- (void)insert:(id <GObject>)obj atIndex:(unsigned)idx;
-//
-//- (void)removeObjectAtIndex:(unsigned)idx;
-//- (void)remove:(id <GObject>)obj;
-//- (void)removeObjectsFrom:(unsigned)idx over:(unsigned)range;
-- (void)removeFirst;
-//- (void)removeLast;
-//- (void)empty;
-//
-- (id <GObject>)first;
-//- (id <GObject>)last;
-- (id <GObject>)objectAtIndex:(unsigned)idx;
-//- (unsigned)indexOf:(id <GObject>)obj;
-//- (BOOL)contains:(id <GObject>)obj;
-//
-//- (unsigned)count;
++ (GArray *) arrayWithObjects:(id <GObject> *)objList;
++ (GArray *) arrayWithObjectsFromArray:(GArray *)list;
++ (GArray *) arrayWithObjectsFromArray:(GArray *)list range:(GRange)range;
+
+- (GArray *) initWithObjects:(id <GObject> *)objList;
+- (GArray *) initWithObjectsFromArray:(GArray *)list;
+- (GArray *) initWithObjectsFromArray:(GArray *)list range:(GRange)range;
+
+- (void) addObject:(id <GObject>)obj;
+- (void) addObject:(id <GObject>)obj ifAbsent:(BOOL)flag;
+- (void) insertObject:(id <GObject>)obj atIndex:(unsigned)idx;
+
+- (void) addObjects:(id <GObject> *)list;
+- (void) addObjectsFromArray:(GArray *)list;
+- (void) addObjectsFromArray:(GArray *)list range:(GRange)range;
+- (void) insertObjectsFromArray:(GArray *)list range:(GRange)range atIndex:(unsigned)index;
+
+- (void) removeObjectAtIndex:(unsigned)idx;
+- (void) removeObject:(id <GObject>)obj;
+- (void) removeObjectsInRange:(GRange)range;
+- (void) removeFirst;
+- (void) removeLast;
+- (void) empty;
+
+- (id <GObject>) first;
+- (id <GObject>) last;
+- (id <GObject>) objectAtIndex:(unsigned)idx;
+- (unsigned) indexOfObject:(id <GObject>)obj;
+- (BOOL) contains:(id <GObject>)obj;
+
+- (unsigned) count;
 
 @end
 
