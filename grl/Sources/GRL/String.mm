@@ -46,6 +46,11 @@ struct _GStringOpaqueData {
 	[super dealloc];
 }
 
+- (id) init
+{
+	return [self initWithCharacters:NULL];
+}
+
 + (id) stringWithCharacters:(const char *)cString
 {
 	return [[[self alloc] initWithCharacters:cString] autorelease];
@@ -111,13 +116,7 @@ struct _GStringOpaqueData {
 			return nil;
 		}
 		
-		if (!cString) {
-			GErrorSet (GInconsistencyError);
-			[self release];
-			return nil;
-		}
-		
-		mbs->cpps->assign (cString + range.start, range.length);
+		if (cString) mbs->cpps->assign (cString + range.start, range.length);
 	}
 	
 	return self;
@@ -125,12 +124,6 @@ struct _GStringOpaqueData {
 
 - (id) initWithString:(GString *)string
 {
-	if (!string || ![string cString]) {
-		GErrorSet (GInconsistencyError);
-		[self release];
-		return nil;
-	}
-	
 	return [self initWithString:string range:GMakeRange(0, [string length])];
 }
 
@@ -211,7 +204,7 @@ struct _GStringOpaqueData {
 			return nil;
 		}
 		
-		[self readFrom:sourceFilename];
+		[self readFromFile:sourceFilename];
 	}
 	
 	return self;
