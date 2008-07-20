@@ -116,7 +116,6 @@
 				HEADER_SEARCH_PATHS = "${SRCROOT}/Headers ${SRCROOT}/Sources";
 				INFOPLIST_FILE = "Resources/GRL-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lobjc";
 				OTHER_REZFLAGS = "";
@@ -196,7 +195,6 @@
 			);
 			buildSettings = {
 				INSTALL_PATH = /usr/local/bin;
-				OPTIMIZATION_CFLAGS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-lobjc";
 				OTHER_REZFLAGS = "";
@@ -245,11 +243,11 @@
 		};
 		A05BA0CF0E327B220068D206 = {
 			children = (
-				A05BA0D00E327B220068D206,
 				A05BA0D10E327B220068D206,
 				A05BA0D20E327B220068D206,
 				A05BA0D30E327B220068D206,
 				A05BA0D40E327B220068D206,
+				A05BA0D00E327B220068D206,
 				A05BA0D50E327B220068D206,
 			);
 			isa = PBXGroup;
@@ -261,9 +259,9 @@
 		A05BA0D00E327B220068D206 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			name = Array.m;
-			path = Sources/GRL/Array.m;
+			lastKnownFileType = sourcecode.cpp.objcpp;
+			name = Array.mm;
+			path = Sources/GRL/Array.mm;
 			refType = 2;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -342,13 +340,13 @@
 		};
 		A05BA0D90E327B220068D206 = {
 			children = (
-				A05BA0DA0E327B220068D206,
+				A05BA0DD0E327B220068D206,
 				A05BA0DB0E327B220068D206,
 				A05BA0DC0E327B220068D206,
-				A05BA0DD0E327B220068D206,
 				A05BA0DE0E327B220068D206,
 				A05BA0DF0E327B220068D206,
 				A05BA0E00E327B220068D206,
+				A05BA0DA0E327B220068D206,
 				A05BA0E10E327B220068D206,
 			);
 			isa = PBXGroup;
