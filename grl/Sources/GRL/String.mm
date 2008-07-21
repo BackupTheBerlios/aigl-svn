@@ -178,6 +178,8 @@ struct _GStringOpaqueData {
 		}
 		
 		mbs->cpps->assign(buffer);
+		
+		free (buffer);
 	}
 	
 	return self;	
@@ -335,12 +337,19 @@ struct _GStringOpaqueData {
 	len = stream.tellg();
 	stream.seekg (0, std::ios::beg);
 	
-	buffer = new char [len];
+	buffer = GAllocate(len);
+	
+	if (!buffer) {
+		GErrorSet (GMemError);
+		stream.close();
+		return;
+	}
 	
 	stream.read (buffer, len);
 	stream.close();
 	
 	mbs->cpps->assign(buffer);
+	GFree (buffer);
 }
 
 - (void) writeToFile:(char const *)filename
