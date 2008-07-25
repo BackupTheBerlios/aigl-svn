@@ -32,13 +32,6 @@
 
 @implementation GObject
 
-+ (id) alloc
-{
-	self = [super alloc];
-	if (!self) GErrorSet(GMemError);
-	return self;
-}
-
 - (unsigned) retainCount
 {
     return ref + 1;
