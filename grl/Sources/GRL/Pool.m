@@ -81,6 +81,11 @@ static GPool *currentPool;
 	[super dealloc];
 }
 
+- (id) autorelease
+{
+	GLogc("*** GRL:Pool.m:%d: -[GPool autorelease] -- pools can't be autoreleased", __LINE__);
+}
+
 + (GPool *) current
 {
 	return currentPool;
@@ -91,7 +96,8 @@ static GPool *currentPool;
 	if ([self current]) {
 		[[self current] addObject:obj];
 	} else {
-		GErrorSet(GLeakError);
+		GLogc("*** GRL:Pool.m:%d: +[GPool addObject:] --"
+			  " object autoreleased without any current autorelease pool, leaking\n", __LINE__);
 	}
 }
 
@@ -100,16 +106,16 @@ static GPool *currentPool;
 	[objcObjects addObject:obj];
 }
 
-+ (void) addPointer:(void *)cObj
++ (void) addCObject:(void *)cObj
 {
 	if ([self current]) {
-		[[self current] addPointer:cObj];
+		[[self current] addObject:cObj];
 	} else {
-		GErrorSet(GLeakError);
+		GLogc("*** GRL:Pool.m:%d: +[GPool addObject:] -- no current pool, leaking\n", __LINE__);
 	}
 }
 
-- (void) addPointer:(void *)cObj
+- (void) addCObject:(void *)cObj
 {
 	[cObjects addObject:cObj];
 }
