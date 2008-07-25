@@ -36,6 +36,7 @@ extern "C" {
 #import <GRL/Functions.h>
 #import <GRL/Object.h>
 #import <GRL/Pool.h>
+#import <GRL/Exception.h>
 #import <GRL/String.h>
 #import <GRL/Array.h>
 #import <GRL/Value.h>
