@@ -28,7 +28,6 @@
 
 #import <GRL/Functions.h>
 #import <GRL/Pool.h>
-#import <GRL/Value.h>
 #import <stdlib.h>
 #import STRING_H
 #import <syslog.h>
@@ -37,22 +36,20 @@
 
 struct GPrivateFunctionsStruct{
 	BOOL initialized;
-	BOOL errors[GCountFlagError];
 	FILE *errStream;
 };
 
-struct GPrivateFunctionsStruct GPrivateFunctionsHandler = {0};
+static struct GPrivateFunctionsStruct GPrivateFunctionsHandler = {0};
 
 static void GFunctionsPrivateInit(void)
 {
 	if (!GPrivateFunctionsHandler.initialized) {
-		bzero (GPrivateFunctionsHandler.errors, sizeof(GPrivateFunctionsHandler.errors));
 		GPrivateFunctionsHandler.errStream = stdout;
 		GPrivateFunctionsHandler.initialized = YES;
 	}
 }
 
-#pragma mark Alloc
+#pragma mark GAlloc
 void *		GAllocate(unsigned length)
 {
 	void *ptr = malloc(length);
@@ -69,18 +66,23 @@ void *		GReallocate(void *ptr, unsigned usedLength, unsigned newLength)
 
 id			GAutoreleaseObject(id <GObject> object)
 {
+	// Note: I don't want to autorelease pools
+	const char *objName = [object name];
+	if (objName && (0 == strcmp("GPool", objName)))
+		return [object autorelease];
+	
 	[GPool addObject:object];
 	return object;
 }
 
 void *		GAutoreleasePointer(void *object)
 {
-	[GPool addPointer:object];
+	[GPool addCObject:object];
 	return object;
 }
 
 
-#pragma mark Log
+#pragma mark GLog
 void		GLogStreamSet(FILE *outputStream)
 {
 	GFunctionsPrivateInit();
@@ -108,12 +110,15 @@ void		GLogc(const char *format, ...)
 	va_end(ap);
 }
 
-void		GLogcv(const char *format, va_list args)
+void		GLogcv(const char *in_format, va_list args)
 {
 	GFunctionsPrivateInit();
 	
-	if (!format)
-		return;
+	char *format = NULL;
+	if (in_format)
+		format = strdup (in_format);
+	else
+		format = strdup("(null)");
 	
 	char date[] = "YYYY/MM/DD HH:MM:SS";
 	time_t t;
@@ -123,7 +128,7 @@ void		GLogcv(const char *format, va_list args)
 	vasprintf(&string, format, args);
 	
 	if (!string) {
-		GErrorSet (GMemError);
+		[GException raise:GMallocException description:nil];
 		return;
 	}
 	
@@ -146,7 +151,7 @@ void		GLogcv(const char *format, va_list args)
 			tm = localtime(&t);
 			strftime(date, sizeof(date), "%Y/%m/%d %H:%M:%S", tm);
 		} else {
-			GErrorSet(GMemError);
+			[GException raise:GMallocException description:nil];
 			free (string);
 			return;
 		}
@@ -160,7 +165,7 @@ void		GLogcv(const char *format, va_list args)
 	
 }
 
-#pragma mark Non linear types functions
+#pragma mark GMake
 GPointi	GMakePointi(int x, int y)
 {
 	return (GPointi){x, y};
@@ -195,62 +200,4 @@ GRange		GMakeRange(unsigned start, unsigned length)
 {
 	return (GRange){start, length};
 }
-
-#pragma mark Error handling
-
-void		GErrorSet(GError error)
-{
-	GFunctionsPrivateInit();
-	GPrivateFunctionsHandler.errors[error] = YES;
-}
-
-GError		GErrorGet(void)
-{
-	GError err = GNoError;
-	
-	GFunctionsPrivateInit();
-	unsigned i;
-	for (i = 0;i < GCountFlagError;i++) {
-		if (GPrivateFunctionsHandler.errors[i]) {
-			GPrivateFunctionsHandler.errors[i] = NO;
-			err = i;
-			break;
-		}
-	}
-	
-	return err;
-}
-
-GString *	GErrorGetString(GError error)
-{
-	GString *desc = nil;
-	
-	switch (error) {
-		case GNoError:
-			desc = [GString stringWithFormat:"no error"];
-			break;
-			
-		case GMemError:
-			desc = [GString stringWithFormat:"could not allocate memory"];
-			break;
-			
-		case GInconsistencyError:
-			desc = [GString stringWithFormat:"an invalid argument has been used or an incorrect value has been found"];
-			break;
-			
-		case GLeakError:
-			desc = [GString stringWithFormat:"an object has been autoreleased without any GPool object created"];
-			break;
-			
-		case GFileError:
-			desc = [GString stringWithFormat:"could not open file for reading or writing ; or could read or write to a file"];
-			break;
-			
-		default:
-			break;
-	}
-	
-	return desc;
-}
-
 
