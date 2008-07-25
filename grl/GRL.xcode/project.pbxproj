@@ -67,6 +67,7 @@
 				A05BA0F00E327B220068D206,
 				A05BA0F10E327B220068D206,
 				A05BA0F20E327B220068D206,
+				A0B480D90E35021E00FBB47E,
 			);
 			isa = PBXHeadersBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,6 +89,7 @@
 				A05BA0E70E327B220068D206,
 				A05BA0E80E327B220068D206,
 				A05BA0E90E327B220068D206,
+				A0B480DF0E35022D00FBB47E,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,7 +118,7 @@
 				HEADER_SEARCH_PATHS = "${SRCROOT}/Headers ${SRCROOT}/Sources";
 				INFOPLIST_FILE = "Resources/GRL-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				OTHER_CFLAGS = "";
+				OTHER_CFLAGS = "-fobjc-exceptions";
 				OTHER_LDFLAGS = "-lobjc";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = GRL;
@@ -195,7 +197,7 @@
 			);
 			buildSettings = {
 				INSTALL_PATH = /usr/local/bin;
-				OTHER_CFLAGS = "";
+				OTHER_CFLAGS = "-fobjc-exceptions";
 				OTHER_LDFLAGS = "-lobjc";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = test;
@@ -246,6 +248,7 @@
 				A05BA0D10E327B220068D206,
 				A05BA0D20E327B220068D206,
 				A05BA0D30E327B220068D206,
+				A0B480DE0E35022D00FBB47E,
 				A05BA0D40E327B220068D206,
 				A05BA0D00E327B220068D206,
 				A05BA0D50E327B220068D206,
@@ -345,6 +348,7 @@
 				A05BA0DC0E327B220068D206,
 				A05BA0DE0E327B220068D206,
 				A05BA0DF0E327B220068D206,
+				A0B480D80E35021E00FBB47E,
 				A05BA0E00E327B220068D206,
 				A05BA0DA0E327B220068D206,
 				A05BA0E10E327B220068D206,
@@ -485,48 +489,72 @@
 			fileRef = A05BA0DA0E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
 			};
 		};
 		A05BA0EC0E327B220068D206 = {
 			fileRef = A05BA0DB0E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
 			};
 		};
 		A05BA0ED0E327B220068D206 = {
 			fileRef = A05BA0DC0E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
 			};
 		};
 		A05BA0EE0E327B220068D206 = {
 			fileRef = A05BA0DD0E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
 			};
 		};
 		A05BA0EF0E327B220068D206 = {
 			fileRef = A05BA0DE0E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
 			};
 		};
 		A05BA0F00E327B220068D206 = {
 			fileRef = A05BA0DF0E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
 			};
 		};
 		A05BA0F10E327B220068D206 = {
 			fileRef = A05BA0E00E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
 			};
 		};
 		A05BA0F20E327B220068D206 = {
 			fileRef = A05BA0E10E327B220068D206;
 			isa = PBXBuildFile;
 			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
 			};
 		};
 		A05BA0F30E327B220068D206 = {
@@ -543,6 +571,39 @@
 		};
 		A05BA0F50E327B480068D206 = {
 			fileRef = A05BA0570E3276B30068D206;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		A0B480D80E35021E00FBB47E = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Exception.h;
+			path = Headers/GRL/Exception.h;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A0B480D90E35021E00FBB47E = {
+			fileRef = A0B480D80E35021E00FBB47E;
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+					Public,
+				);
+			};
+		};
+		A0B480DE0E35022D00FBB47E = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			name = Exception.m;
+			path = Sources/GRL/Exception.m;
+			refType = 2;
+			sourceTree = SOURCE_ROOT;
+		};
+		A0B480DF0E35022D00FBB47E = {
+			fileRef = A0B480DE0E35022D00FBB47E;
 			isa = PBXBuildFile;
 			settings = {
 			};
