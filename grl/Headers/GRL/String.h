@@ -34,6 +34,7 @@ extern "C" {
 #import <GRL/Config.h>
 	
 typedef struct _GStringOpaqueData _GStringOpaqueData;
+#define G(chars) [GString stringWithCharacters:chars]
 	
 @interface GString : GObject {
 	_GStringOpaqueData *mbs;
