@@ -31,6 +31,7 @@ extern "C" {
 #endif
 
 #import <GRL/Config.h>
+#import <GRL/Exception.h>
 #import <GRL/String.h>
 #import <stdlib.h>
 #import <stdarg.h>
@@ -64,22 +65,6 @@ GRecti		GMakeRecti(int x, int y, int w, int h);
 GRectf		GMakeRectf(float x, float y, float w, float h);
 GRange		GMakeRange(unsigned start, unsigned length);
 
-
-#pragma mark GError
-
-typedef enum {
-	GNoError = 0,				// no error
-	GMemError = 1,				// out of memory
-	GInconsistencyError = 2,	// invalid arg
-	GLeakError = 3,			// autoreleased with no pool in place
-	GFileError = 4,			// file access error
-	
-	GCountFlagError			// for private use
-} GError;
-
-void		GErrorSet(GError error);
-GError		GErrorGet(void);
-GString *	GErrorGetString(GError error);
 
 #ifdef __cplusplus
 }
