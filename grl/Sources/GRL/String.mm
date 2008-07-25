@@ -27,6 +27,7 @@
 
 #import <GRL/String.h>
 #import <GRL/Functions.h>
+#import <GRL/Exception.h>
 #import STRING_H
 #import <string>
 #import <fstream>
@@ -103,7 +104,7 @@ struct _GStringOpaqueData {
 		mbs = (_GStringOpaqueData *)GAllocate (sizeof(*mbs));
 		
 		if(!mbs) {
-			GErrorSet (GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
@@ -111,7 +112,7 @@ struct _GStringOpaqueData {
 		mbs->cpps = new std::string;
 		
 		if (!mbs->cpps) {
-			GErrorSet (GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
@@ -151,7 +152,7 @@ struct _GStringOpaqueData {
 		mbs = (_GStringOpaqueData *)GAllocate (sizeof(*mbs));
 		
 		if(!mbs) {
-			GErrorSet (GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
@@ -159,20 +160,19 @@ struct _GStringOpaqueData {
 		mbs->cpps = new std::string;
 		
 		if (!mbs->cpps) {
-			GErrorSet (GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
 		
 		if (!format) {
-			GErrorSet(GInconsistencyError);
 			return self;
 		}
 		
 		vasprintf(&buffer, format, args);
 		
 		if (!buffer) {
-			GErrorSet(GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
@@ -193,7 +193,7 @@ struct _GStringOpaqueData {
 		mbs = (_GStringOpaqueData *)GAllocate (sizeof(*mbs));
 		
 		if(!mbs) {
-			GErrorSet (GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
@@ -201,7 +201,7 @@ struct _GStringOpaqueData {
 		mbs->cpps = new std::string;
 		
 		if (!mbs->cpps) {
-			GErrorSet (GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
@@ -320,7 +320,6 @@ struct _GStringOpaqueData {
 - (void) readFromFile:(char const *)filename
 {
 	if (!filename) {
-		GErrorSet(GInconsistencyError);
 		return;
 	}
 	
@@ -329,7 +328,7 @@ struct _GStringOpaqueData {
 	std::ifstream stream(filename);
 	
 	if (!stream.is_open()) {
-		GErrorSet (GFileError);
+		[GException raise:GFileAccessException description:nil];
 		return;
 	}
 	
@@ -337,10 +336,10 @@ struct _GStringOpaqueData {
 	len = stream.tellg();
 	stream.seekg (0, std::ios::beg);
 	
-	buffer = GAllocate(len);
+	buffer = (char *)GAllocate(len);
 	
 	if (!buffer) {
-		GErrorSet (GMemError);
+		[GException raise:GMallocException description:nil];
 		stream.close();
 		return;
 	}
@@ -355,14 +354,13 @@ struct _GStringOpaqueData {
 - (void) writeToFile:(char const *)filename
 {
 	if (!filename) {
-		GErrorSet(GInconsistencyError);
 		return;
 	}
 	
 	std::ofstream stream(filename);
 	
 	if (!stream.is_open()) {
-		GErrorSet (GFileError);
+		[GException raise:GFileAccessException description:nil];
 		return;
 	}
 	
