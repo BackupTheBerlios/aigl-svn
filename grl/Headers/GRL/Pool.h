@@ -43,8 +43,8 @@ extern "C" {
 
 + (void) addObject:(id <GObject>)obj;
 - (void) addObject:(id <GObject>)obj;
-+ (void) addPointer:(void *)cObj;
-- (void) addPointer:(void *)cObj;
++ (void) addCObject:(void *)cObj;
+- (void) addCObject:(void *)cObj;
 
 @end
 
