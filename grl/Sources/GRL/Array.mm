@@ -27,6 +27,7 @@
 
 #import <GRL/Array.h>
 #import <GRL/Functions.h>
+#import <GRL/Exception.h>
 #import <GRL/Config.h>
 #import <stdlib.h>
 #import STRING_H
@@ -76,7 +77,7 @@ struct _GRawArrayOpaqueData {
 		mbs = (_GRawArrayOpaqueData *)GAllocate (sizeof(*mbs));
 		
 		if(!mbs) {
-			GErrorSet (GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
@@ -84,13 +85,12 @@ struct _GRawArrayOpaqueData {
 		mbs->vec = new std::vector <const void *>;
 		
 		if (!mbs->vec) {
-			GErrorSet (GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
 		
 		if (!objList) {
-			GErrorSet (GInconsistencyError);
 			return self;
 		}
 		
@@ -113,7 +113,7 @@ struct _GRawArrayOpaqueData {
 		mbs = (_GRawArrayOpaqueData *)GAllocate (sizeof(*mbs));
 		
 		if(!mbs) {
-			GErrorSet (GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
@@ -121,7 +121,7 @@ struct _GRawArrayOpaqueData {
 		mbs->vec = new std::vector <const void *>;
 		
 		if (!mbs->vec) {
-			GErrorSet (GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
@@ -155,7 +155,6 @@ struct _GRawArrayOpaqueData {
 - (void) addObjects:(const void **)list
 {
 	if (!list) {
-		GErrorSet (GInconsistencyError);
 		return;
 	}
 	
@@ -178,7 +177,6 @@ struct _GRawArrayOpaqueData {
 - (void) insertObjectsFromArray:(GRawArray *)list range:(GRange)range atIndex:(unsigned)index
 {
 	if (!list || range.start > [list count] || range.length == 0) {
-		GErrorSet (GInconsistencyError);
 		return;
 	}
 	
@@ -205,8 +203,6 @@ struct _GRawArrayOpaqueData {
 	unsigned idx = [self indexOfObject:obj];
 	if (idx != GNotFound) {
 		mbs->vec->erase(mbs->vec->begin() + idx);
-	} else {
-		GErrorSet (GInconsistencyError);
 	}
 }
 
@@ -317,7 +313,7 @@ struct _GRawArrayOpaqueData {
 		arr = [GRawArray new];
 		
 		if (!arr) {
-			GErrorSet (GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
@@ -336,7 +332,7 @@ struct _GRawArrayOpaqueData {
 		arr = [GRawArray new];
 		
 		if (!arr) {
-			GErrorSet (GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
@@ -355,7 +351,7 @@ struct _GRawArrayOpaqueData {
 		arr = [GRawArray new];
 		
 		if (!arr) {
-			GErrorSet (GMemError);
+			[GException raise:GMallocException description:nil];
 			[self release];
 			return nil;
 		}
@@ -415,7 +411,6 @@ struct _GRawArrayOpaqueData {
 - (void) insertObjectsFromArray:(GArray *)list range:(GRange)range atIndex:(unsigned)index
 {
 	if (!list || range.start > [list count] || range.length == 0) {
-		GErrorSet (GInconsistencyError);
 		return;
 	}
 	
