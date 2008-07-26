@@ -81,6 +81,62 @@ void *		GAutoreleasePointer(void *object)
 	return object;
 }
 
+GInt8 *		GAllocInt8(GInt8 value)
+{
+	GInt8 *ptr = GAllocate(1);
+	if (ptr) *ptr = value;
+	return ptr;
+}
+
+GUInt8 *	GAllocUInt8(GUInt8 value)
+{
+	GUInt8 *ptr = GAllocate(1);
+	if (ptr) *ptr = value;
+	return ptr;
+}
+
+GInt16 *	GAllocInt16(GInt16 value)
+{
+	GInt16 *ptr = GAllocate(2);
+	if (ptr) *ptr = value;
+	return ptr;
+}
+
+GUInt16 *	GAllocUInt16(GUInt16 value)
+{
+	GUInt16 *ptr = GAllocate(2);
+	if (ptr) *ptr = value;
+	return ptr;
+}
+
+GInt32 *	GAllocInt32(GInt32 value)
+{
+	GInt32 *ptr = GAllocate(4);
+	if (ptr) *ptr = value;
+	return ptr;
+}
+
+GUInt32 *	GAllocUInt32(GUInt32 value)
+{
+	GUInt32 *ptr = GAllocate(4);
+	if (ptr) *ptr = value;
+	return ptr;
+}
+
+float *		GAllocFloat(float value)
+{
+	float *ptr = GAllocate(sizeof(float));
+	if (ptr) *ptr = value;
+	return ptr;
+}
+
+double *	GAllocDouble(double value)
+{
+	double *ptr = GAllocate(sizeof(double));
+	if (ptr) *ptr = value;
+	return ptr;
+}
+
 
 #pragma mark GLog
 void		GLogStreamSet(FILE *outputStream)
