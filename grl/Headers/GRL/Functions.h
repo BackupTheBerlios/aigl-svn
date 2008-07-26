@@ -45,6 +45,14 @@ id			GAutoreleaseObject(id <GObject> object);
 void *		GAutoreleasePointer(void *object);
 #define		GFree(obj) free(obj), obj = NULL
 
+GInt8 *		GAllocInt8(GInt8 value);
+GUInt8 *	GAllocUInt8(GUInt8 value);
+GInt16 *	GAllocInt16(GInt16 value);
+GUInt16 *	GAllocUInt16(GUInt16 value);
+GInt32 *	GAllocInt32(GInt32 value);
+GUInt32 *	GAllocUInt32(GUInt32 value);
+float *		GAllocFloat(float value);
+double *	GAllocDouble(double value);
 
 #pragma mark GLog
 
