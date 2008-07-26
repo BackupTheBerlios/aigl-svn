@@ -63,7 +63,7 @@ extern "C" {
 // 8 bits integer types
 #if UCHAR_MAX == 0xFF
 typedef char			GInt8;
-typedef unsigned char	GUint8;
+typedef unsigned char	GUInt8;
 #else
 #error No 8 bits integer type for this platform
 #endif
@@ -71,13 +71,13 @@ typedef unsigned char	GUint8;
 // 16 bits integer types
 #if USHRT_MAX == 0xFFFF
 typedef short			GInt16;
-typedef unsigned short	GUint16;
+typedef unsigned short	GUInt16;
 #elif UINT_MAX == 0xFFFF
 typedef int				GInt16;
-typedef unsigned int	GUint16;
+typedef unsigned int	GUInt16;
 #elif ULONGRL_MAX == 0xFFFF
 typedef long			GInt16;
-typedef unsigned long	GUint16;
+typedef unsigned long	GUInt16;
 #else
 #error No 16 bits integer type for this platform
 #endif
@@ -85,17 +85,34 @@ typedef unsigned long	GUint16;
 // 32 bits integer types
 #if USHRT_MAX == 0xFFFFFFFF
 typedef short			GInt32;
-typedef unsigned short	GUint32;
+typedef unsigned short	GUInt32;
 #elif UINT_MAX == 0xFFFFFFFF
 typedef int				GInt32;
-typedef unsigned int	GUint32;
+typedef unsigned int	GUInt32;
 #elif ULONGRL_MAX == 0xFFFFFFFF
 typedef long			GInt32;
-typedef unsigned long	GUint32;
+typedef unsigned long	GUInt32;
 #else
 #error No 32 bits integer type for this platform
 #endif
 
+typedef GUInt8		GByte;
+typedef GInt32		GInt;
+typedef GUInt32		GUInt;
+typedef double		GFloat;
+
+typedef enum {
+	GNullType = 0,
+	GInt8Type,
+	GUInt8Type,
+	GInt16Type,
+	GUInt16Type,
+	GInt32Type,
+	GUInt32Type,
+	GFloatType,
+	GDoubleType,
+	GLongDoubleType
+} GType;
 
 
 #pragma mark Non linear types
